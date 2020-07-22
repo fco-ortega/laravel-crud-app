@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Usuario;
 
-class UsuarioController extends Controller
+class UsuariosController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -101,7 +101,7 @@ class UsuarioController extends Controller
         $usuario->password = $request->get('password');
         $usuario->save();
 
-        return redirect('/usuarios')->with('success', 'Usuario actualizado')
+        return redirect('/usuarios')->with('success', 'Usuario actualizado');
     }
 
     /**

@@ -24,7 +24,7 @@
           <td>Email</td>
           <td>Fecha de Nacimiento</td>
           <td>Password</td>
-          <td colspan = 2>Actions</td>
+          <td colspan = 2></td>
         </tr>
     </thead>
     <tbody>

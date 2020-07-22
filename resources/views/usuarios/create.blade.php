@@ -39,7 +39,7 @@
               <input type="text" class="form-control" name="fecha_nac"/>
           </div>
           <div class="form-group">
-              <label for="password">Job Title:</label>
+              <label for="password">Password:</label>
               <input type="text" class="form-control" name="password"/>
           </div>                         
           <button type="submit" class="btn btn-primary-outline">Guardar</button>
