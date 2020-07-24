@@ -12,6 +12,7 @@ class Usuario extends Model
         'apellido',
         'email',
         'fecha_nac',
-        'password'
+        'password',
+        'imagen'
     ];
 }

@@ -14,7 +14,7 @@
         </ul>
       </div><br />
     @endif
-      <form method="post" action="{{ route('usuarios.store') }}">
+      <form method="post" action="{{ route('usuarios.store') }}" enctype="multipart/form-data">
           @csrf
           <div class="form-group">    
               <label for="rut">Rut:</label>
@@ -41,8 +41,12 @@
           <div class="form-group">
               <label for="password">Password:</label>
               <input type="text" class="form-control" name="password"/>
-          </div>                         
-          <button type="submit" class="btn btn-primary-outline">Guardar</button>
+          </div>
+          <div class="form-group">
+              <label for="imagen">Subir foto de perfil:</label>
+              <input type="file" class="form-control" name="imagen"/>
+          </div>                           
+          <button type="submit" class="btn btn-primary">Guardar</button>
       </form>
   </div>
 </div>

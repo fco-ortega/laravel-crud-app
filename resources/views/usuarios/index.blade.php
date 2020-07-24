@@ -18,6 +18,7 @@
   <table class="table table-striped">
     <thead>
         <tr>
+          <td></td>
           <td>RUT</td>
           <td>Nombre</td>
           <td>Apellido</td>
@@ -30,6 +31,7 @@
     <tbody>
         @foreach($usuarios as $usuario)
         <tr>
+            <td><img src="{{asset('/images/' . $usuario->imagen)}}" class="img-thumbnail" width="75"></td>
             <td>{{$usuario->rut}}</td>
             <td>{{$usuario->nombre}}</td>
             <td>{{$usuario->apellido}}</td>

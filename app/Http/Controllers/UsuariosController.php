@@ -39,18 +39,26 @@ class UsuariosController extends Controller
         $request->validate([
             'rut'=>'required',
             'apellido'=>'required',
-            'email'=>'required'
+            'email'=>'required',
+            
         ]);
 
-        $usuario = new Usuario([
-            'rut' => $request->get('rut'),
-            'nombre' => $request->get('nombre'),
-            'apellido' => $request->get('apellido'),
-            'email' => $request->get('email'),
-            'fecha_nac' => $request->get('fecha_nac'),
-            'password' => $request->get('password')
-        ]);
-        $usuario->save();
+        if ($files = $request->file('imagen')) {
+            $destinationPath = 'images/'; 
+            $profileImage = $files->getClientOriginalName();
+            $files->move($destinationPath, $profileImage);
+            $insert['imagen'] = "$profileImage";
+        }
+
+        $insert['rut'] = $request->get('rut');
+        $insert['nombre'] = $request->get('nombre');
+        $insert['apellido'] = $request->get('apellido');
+        $insert['email'] = $request->get('email');
+        $insert['fecha_nac'] = $request->get('fecha_nac');
+        $insert['password'] = $request->get('password');
+
+        Usuario::insert($request->except('_token'));
+
         return redirect('/usuarios')->with('success', 'Usuario guardado');
     }
 
@@ -89,17 +97,25 @@ class UsuariosController extends Controller
         $request->validate([
             'rut'=>'required',
             'apellido'=>'required',
-            'email'=>'required'
+            'email'=>'required',
+            
         ]);
 
-        $usuario = Usuario::find($id);
-        $usuario->rut = $request->get('rut');
-        $usuario->nombre = $request->get('nombre');
-        $usuario->apellido = $request->get('apellido');
-        $usuario->email = $request->get('email');
-        $usuario->fecha_nac = $request->get('fecha_nac');
-        $usuario->password = $request->get('password');
-        $usuario->save();
+        if ($files = $request->file('imagen')) {
+            $destinationPath = 'images/'; 
+            $profileImage = $files->getClientOriginalName();
+            $files->move($destinationPath, $profileImage);
+            $update['imagen'] = "$profileImage";
+        }
+
+        $update['rut'] = $request->get('rut');
+        $update['nombre'] = $request->get('nombre');
+        $update['apellido'] = $request->get('apellido');
+        $update['email'] = $request->get('email');
+        $update['fecha_nac'] = $request->get('fecha_nac');
+        $update['password'] = $request->get('password');
+
+        Usuario::where('id', $id)->update($update);
 
         return redirect('/usuarios')->with('success', 'Usuario actualizado');
     }

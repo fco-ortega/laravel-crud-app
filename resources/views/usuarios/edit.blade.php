@@ -14,7 +14,7 @@
         </div>
         <br /> 
         @endif
-        <form method="post" action="{{ route('usuarios.update', $usuario->id) }}">
+        <form method="post" action="{{ route('usuarios.update', $usuario->id) }}" enctype="multipart/form-data">
             @method('PATCH') 
             @csrf
             <div class="form-group">
@@ -44,6 +44,10 @@
                 <label for="password">Password:</label>
                 <input type="text" class="form-control" name="password" value={{ $usuario->password }} />
             </div>
+            <div class="form-group">
+              <label for="imagen">Subir foto de perfil:</label>
+              <input type="file" class="form-control" name="imagen" value={{ $usuario->imagen }} />
+          </div> 
             <button type="submit" class="btn btn-primary">Guardar</button>
         </form>
     </div>
