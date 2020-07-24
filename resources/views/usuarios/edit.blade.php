@@ -41,8 +41,9 @@
                 <input type="text" class="form-control" name="fecha_nac" value={{ $usuario->fecha_nac }} />
             </div>
             <div class="form-group">
-                <label for="password">Password:</label>
-                <input type="text" class="form-control" name="password" value={{ $usuario->password }} />
+              <label for="password">Password:</label>
+              <input type="password" class="form-control" name="password" id="password" value={{ $usuario->password }} />
+              <input type="checkbox" onclick="showPass()"> Mostrar Password
             </div>
             <div class="form-group">
               <label for="imagen">Subir foto de perfil:</label>
@@ -52,4 +53,14 @@
         </form>
     </div>
 </div>
+<script>
+function showPass() {
+  var pass = document.getElementById("password");
+  if (pass.type === "password") {
+    pass.type = "text";
+  } else {
+    pass.type = "password";
+  }
+}
+</script>
 @endsection

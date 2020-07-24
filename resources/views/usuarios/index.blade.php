@@ -24,20 +24,18 @@
           <td>Apellido</td>
           <td>Email</td>
           <td>Fecha de Nacimiento</td>
-          <td>Password</td>
           <td colspan = 2></td>
         </tr>
     </thead>
     <tbody>
         @foreach($usuarios as $usuario)
         <tr>
-            <td><img src="{{asset('/images/' . $usuario->imagen)}}" class="img-thumbnail" width="75"></td>
+            <td><img src="{{asset('/images/' . $usuario->imagen)}}" class="img-thumbnail rounded-circle" width="75"></td>
             <td>{{$usuario->rut}}</td>
             <td>{{$usuario->nombre}}</td>
             <td>{{$usuario->apellido}}</td>
             <td>{{$usuario->email}}</td>
             <td>{{$usuario->fecha_nac}}</td>
-            <td>{{$usuario->password}}</td>
             <td>
                 <a href="{{ route('usuarios.edit',$usuario->id)}}" class="btn btn-primary">Editar</a>
             </td>
@@ -45,7 +43,7 @@
                 <form action="{{ route('usuarios.destroy', $usuario->id)}}" method="post">
                   @csrf
                   @method('DELETE')
-                  <button class="btn btn-danger" type="submit">Eliminar</button>
+                  <button class="btn btn-danger" onclick="return confirm('¿Está seguro de eliminar este Usuario?')" type="submit">Eliminar</button>
                 </form>
             </td>
         </tr>

@@ -37,10 +37,10 @@ class UsuariosController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'rut'=>'required',
+            'rut'=>'required|unique:usuarios,rut',
             'apellido'=>'required',
             'email'=>'required',
-            
+            'imagen'=>'image|mimes:jpg,jpeg|dimensions:max_width=200,max_height=200'
         ]);
 
         if ($files = $request->file('imagen')) {
@@ -57,7 +57,7 @@ class UsuariosController extends Controller
         $insert['fecha_nac'] = $request->get('fecha_nac');
         $insert['password'] = $request->get('password');
 
-        Usuario::insert($request->except('_token'));
+        Usuario::create($insert);
 
         return redirect('/usuarios')->with('success', 'Usuario guardado');
     }
@@ -95,10 +95,10 @@ class UsuariosController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'rut'=>'required',
+            'rut'=>'required|unique:usuarios,rut,' . $id,
             'apellido'=>'required',
             'email'=>'required',
-            
+            'imagen'=>'image|mimes:jpg,jpeg|dimensions:max_width=200,max_height=200'
         ]);
 
         if ($files = $request->file('imagen')) {

@@ -16,9 +16,9 @@ class UsuariosSeeder extends Seeder
         Usuario::create([
             'rut' => '111-1',
             'nombre' => 'John',
-            'apellido' => 'Doe',
+            'apellido' => 'Wick',
             'email' => 'john@example.com',
-            'fecha_nac' => '01-01-1990',
+            'fecha_nac' => '02-09-1964',
             'password' => 'test',
         ]);
         Usuario::create([
@@ -26,7 +26,7 @@ class UsuariosSeeder extends Seeder
             'nombre' => 'Bruce',
             'apellido' => 'Wayne',
             'email' => 'wayne@example.com',
-            'fecha_nac' => '01-01-1990',
+            'fecha_nac' => '30-03-1939',
             'password' => 'test2',
         ]);
         Usuario::create([
@@ -34,8 +34,16 @@ class UsuariosSeeder extends Seeder
             'nombre' => 'Tony',
             'apellido' => 'Stark',
             'email' => 'stark@example.com',
-            'fecha_nac' => '01-01-1990',
+            'fecha_nac' => '29-05-1970',
             'password' => 'test3',
+        ]);
+        Usuario::create([
+            'rut' => '111-4',
+            'nombre' => 'Bruce',
+            'apellido' => 'Lee',
+            'email' => 'lee@example.com',
+            'fecha_nac' => '27-11-1940',
+            'password' => 'test4',
         ]);
     }
 }

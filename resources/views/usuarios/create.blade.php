@@ -3,7 +3,7 @@
 @section('main')
 <div class="row">
  <div class="col-sm-8 offset-sm-2">
-    <h1 class="display-3">Crear o Editar Usuario</h1>
+    <h1 class="display-3">Crear Usuario</h1>
   <div>
     @if ($errors->any())
       <div class="alert alert-danger">
@@ -40,7 +40,8 @@
           </div>
           <div class="form-group">
               <label for="password">Password:</label>
-              <input type="text" class="form-control" name="password"/>
+              <input type="password" class="form-control" name="password" id="password"/>
+              <input type="checkbox" onclick="showPass()"> Mostrar Password
           </div>
           <div class="form-group">
               <label for="imagen">Subir foto de perfil:</label>
@@ -51,4 +52,14 @@
   </div>
 </div>
 </div>
+<script>
+function showPass() {
+  var pass = document.getElementById("password");
+  if (pass.type === "password") {
+    pass.type = "text";
+  } else {
+    pass.type = "password";
+  }
+}
+</script>
 @endsection
